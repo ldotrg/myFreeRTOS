@@ -8,53 +8,41 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-
-
-
 //Player1
-int16_t player1X = 0;
-int16_t player1Y = 0;
+int16_t player1X = 10;
+int16_t player1Y = 10;
 uint16_t player1W = 60;
 uint16_t player1H = 10;
 uint8_t player1IsReversed = 1;
 
 //Player2
-int16_t player2X = LCD_PIXEL_WIDTH - 10 ;
-int16_t player2Y = LCD_PIXEL_HEIGHT - 10;
+int16_t player2X = LCD_PIXEL_WIDTH - 20;
+int16_t player2Y = LCD_PIXEL_HEIGHT - 20;
 uint16_t player2W = 60;
 uint16_t player2H = 10;
 uint8_t player2IsReversed = 0;
 
 //Ball
-uint16_t ballSize = 5;
-int16_t ballX = ( LCD_PIXEL_WIDTH ) / 2 ;
-int16_t ballY = ( LCD_PIXEL_HEIGHT ) / 2 ;
-int16_t ballVX = 5;			//ball X speed
-int16_t ballVY = 5;			//ball Y speed
+uint16_t ballSize = 10;
+int16_t ballX = ( LCD_PIXEL_WIDTH - 5 ) / 2;
+int16_t ballY = ( LCD_PIXEL_HEIGHT - 5 ) / 2;
+int16_t ballVX = 5;
+int16_t ballVY = 5;
 uint8_t ballIsRun = 0;
 
 //Mode
 uint8_t demoMode = 0;
 
-
-
-
-
-
-
 void
 BallReset()
-{	
-	ballX = ( LCD_PIXEL_WIDTH ) / 2;
-	ballY = ( LCD_PIXEL_HEIGHT ) / 2;
+{
+	ballX = ( LCD_PIXEL_WIDTH - 5 ) / 2;
+	ballY = ( LCD_PIXEL_HEIGHT - 5 ) / 2;
 
 	ballVX = 5;
 	ballVY = 5;
-    ballIsRun = 1;
 
-    
-	
+	ballIsRun = 1;
 }
 
 void
@@ -126,7 +114,7 @@ GAME_Update()
 		if( ballIsRun == 1 ){
 
 			LCD_SetTextColor( LCD_COLOR_BLACK );
-			LCD_DrawFullCircle( ballX, ballY, ballSize );
+			LCD_DrawFullRect( ballX, ballY, ballSize, ballSize );
 
 			//Touch wall
 			ballX += ballVX;
@@ -238,7 +226,7 @@ GAME_Update()
 			if( ballIsRun == 1 ){
 
 				LCD_SetTextColor( LCD_COLOR_BLACK );
-				LCD_DrawFullCircle( ballX, ballY, ballSize );
+				LCD_DrawFullRect( ballX, ballY, ballSize, ballSize );
 
 				//Touch wall
 				ballX += ballVX;
@@ -310,15 +298,13 @@ GAME_Update()
 	}
 }
 
-void
+	void
 GAME_Render()
 {
 	LCD_SetTextColor( LCD_COLOR_WHITE );
 	LCD_DrawFullRect( player1X, player1Y, player1W, player1H );
 	LCD_DrawFullRect( player2X, player2Y, player2W, player2H );
-	LCD_DrawFullCircle( ballX, ballY, ballSize );
-	LCD_DrawCircle( LCD_PIXEL_WIDTH/ 2, LCD_PIXEL_HEIGHT  / 2 , 50);
+	LCD_DrawFullRect( ballX, ballY, ballSize, ballSize );
 	LCD_SetTextColor( LCD_COLOR_RED );
-	LCD_DrawLine(  0, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH  , LCD_DIR_HORIZONTAL );
-	//Xpos,Ypos,length, direction
+	LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
 }

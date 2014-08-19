@@ -8,10 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-
-
-
 //Player1
 int16_t player1X = 0;
 int16_t player1Y = 0;
@@ -37,21 +33,15 @@ uint8_t ballIsRun = 0;
 //Mode
 uint8_t demoMode = 0;
 
-
-
-
-
-
-
 void
 BallReset()
-{	
+{
 	ballX = ( LCD_PIXEL_WIDTH ) / 2;
 	ballY = ( LCD_PIXEL_HEIGHT ) / 2;
 
 	ballVX = 5;
 	ballVY = 5;
-    ballIsRun = 1;
+    ballIsRun = 0;
 
     
 	

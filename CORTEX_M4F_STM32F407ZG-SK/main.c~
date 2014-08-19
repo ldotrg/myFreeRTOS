@@ -35,14 +35,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
-#include "stm32f429i_discovery.h"
-#include "stm32f429i_discovery_lcd.h"
-#include "stm32f429i_discovery_l3gd20.h"
-
-#include <r3dfb.h>
-#include <r3d.h>
 /** @addtogroup Template
   * @{
   */ 
@@ -109,7 +101,7 @@ int main(void)
 	prvInit();
 
 	if( STM_EVAL_PBGetState( BUTTON_USER ) )
-		demoMode = 0;
+		demoMode = 1;
 
 	xTaskCreate( GameTask, (signed char*) "GameTask", 128, NULL, tskIDLE_PRIORITY + 1, NULL );
 	xTaskCreate( GameEventTask1, (signed char*) "GameEventTask1", 128, NULL, tskIDLE_PRIORITY + 1, NULL );

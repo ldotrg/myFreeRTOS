@@ -16,7 +16,11 @@ GAME_Update();
 void
 GAME_Render();
 
+void
+gryo_init();
 
+void
+gryo_update();
 
 
 #endif
