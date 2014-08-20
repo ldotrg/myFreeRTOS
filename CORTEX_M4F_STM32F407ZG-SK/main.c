@@ -41,8 +41,6 @@
 #include "stm32f429i_discovery_lcd.h"
 #include "stm32f429i_discovery_l3gd20.h"
 
-#include <r3dfb.h>
-#include <r3d.h>
 /** @addtogroup Template
   * @{
   */ 
