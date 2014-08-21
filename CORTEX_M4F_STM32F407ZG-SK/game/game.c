@@ -103,7 +103,6 @@ GAME_EventHandler1()
 void
 GAME_EventHandler2()
 {
-
 }
 
 void
@@ -151,9 +150,9 @@ GAME_Render()
 	//Xpos,Ypos,length, direction
 	//Win or lose
 	uint8_t ascii = 0x30;
-		if(hitTimes > 10 || missTimes > 10){
+		if(hitTimes > 9 || missTimes > 15){
 			LCD_Clear(0x0000);
-			if(missTimes < 10)
+			if(missTimes < 15)
 				LCD_DisplayStringLine(LCD_PIXEL_HEIGHT/2+20, "You Win");
 			else
 				LCD_DisplayStringLine(LCD_PIXEL_HEIGHT/2+20, "You Lose");
@@ -162,7 +161,10 @@ GAME_Render()
 			LCD_Clear(0x0000);
 		}
 
-	//
+	//hitTimes
+	LCD_SetTextColor( LCD_COLOR_RED );
+	LCD_DisplayChar(LCD_PIXEL_HEIGHT/2+5,10, hitTimes+48);
+	//Display Ball
 	LCD_SetTextColor( LCD_COLOR_BLUE );
 	int i;
 	for(i=0;i<MAX_COIN_NUM;i++){
