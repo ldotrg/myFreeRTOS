@@ -150,14 +150,20 @@ GAME_Render()
 	//Xpos,Ypos,length, direction
 	//Win or lose
 	uint8_t ascii = 0x30;
-		if(hitTimes > 9 || missTimes > 15){
+		if(hitTimes > 10 || missTimes > 15){
 			LCD_Clear(0x0000);
 			if(missTimes < 15)
 				LCD_DisplayStringLine(LCD_PIXEL_HEIGHT/2+20, "You Win");
 			else
 				LCD_DisplayStringLine(LCD_PIXEL_HEIGHT/2+20, "You Lose");
 			missTimes = hitTimes = 0;
-			vTaskDelay(1000);
+			vTaskDelay(700);
+			LCD_Clear(0x0000);
+			LCD_DisplayStringLine(LCD_PIXEL_HEIGHT/2+20, "Play Again");
+			vTaskDelay(500);
+			LCD_Clear(0x0000);
+			LCD_DisplayStringLine(LCD_PIXEL_HEIGHT/2+20, "Ready Go");
+			vTaskDelay(300);
 			LCD_Clear(0x0000);
 		}
 
